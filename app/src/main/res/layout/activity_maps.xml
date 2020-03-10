@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.uuj.moviebuddy.MapsActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/textVieww"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Cinemas"
+            android:textAlignment="center"
+            android:textSize="30sp"    />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_findcinemas"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textVieww"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="60dp"
+        android:background="#fff"
+        android:drawableTop="@drawable/ic_searchbtn" />
+
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textVieww"
+            android:layout_above="@id/searchbar"
+            android:id="@+id/map"
+            tools:context=".MapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <RelativeLayout
+        android:id="@+id/searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/navView"
+        android:elevation="10dp"
+        android:background="#fff">
+
+        <EditText
+            android:id="@+id/editText_cinemasearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:hint="Search for Cinema"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/searchbtn"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"/>
+
+        <ImageView
+            android:id="@+id/searchbtn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_searchbtn"/>
+
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/navView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+        <android.support.design.widget.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bottomNavView"
+            android:background="@drawable/toolbar_border"
+            app:menu="@menu/bottom_navigation_menu">
+
+        </android.support.design.widget.BottomNavigationView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

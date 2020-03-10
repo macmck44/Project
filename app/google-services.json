@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1077650761772",
+    "firebase_url": "https://mmkproject-fd06a.firebaseio.com",
+    "project_id": "mmkproject-fd06a",
+    "storage_bucket": "mmkproject-fd06a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077650761772:android:7acbf383013a8c5768c989",
+        "android_client_info": {
+          "package_name": "com.example.uuj.moviebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077650761772-osud1ahae9ndbj7nct9o1k14e1fs90gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA59YLLB-hFhQB2t0S60q0o7iRlHLTC_P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077650761772-osud1ahae9ndbj7nct9o1k14e1fs90gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
