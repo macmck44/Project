@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MovieBuddy</string>
     <string name="maps_api_key">AIzaSyAnIrJX8WMNRzHTwEVAcFIdl8pW2Wn_dRc</string>
+    <string name="moviedb_api_key">e3933d5b5c409463ee2c85a307c0df96</string>
+    <string name="movie_name">Movie Title</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="rating">Rating</string>
+    <string name="release_date">Release Date</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="sort_key">Sort Key</string>
+    <string name="sort_popular">Most Popular</string>
+    <string name="sort_rating">Highest Rated</string>
 </resources>
