@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.graphics.Movie;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,6 +24,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +34,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class HomeActivity extends AppCompatActivity{
 
@@ -136,6 +141,53 @@ public class HomeActivity extends AppCompatActivity{
     }
 
     private void loadJSON() {
+        try{
+            if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty())   {
+                Toast.makeText(getApplicationContext(), "Need API Key", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return;
+            }
 
+            Client Client = new Client();
+            Service apiService = Client.getClient().create(Service.class);
+            Call<Response> call = apiService.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    List<com.example.uuj.moviebuddy.Movie> movies = response.body().getResults();
+                    recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                    recyclerView.smoothScrollToPosition(0);
+                    if(swipeRefreshLayout.isRefreshing())   {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch(Exception e)    {
+            Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)   {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())    {
+            case R.id.menu_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
