@@ -55,7 +55,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Viewholder> 
                         intent.putExtra("release_date", movieList.get(position).getReleaseDate());
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         thecontext.startActivity(intent);
-                        Toast.makeText(v.getContext(), "Clicked" + clickedItem.getOriginalTitle(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "Clicked " + clickedItem.getOriginalTitle(), Toast.LENGTH_SHORT).show();
 
                     }
                 }

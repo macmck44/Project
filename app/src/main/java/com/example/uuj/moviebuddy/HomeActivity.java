@@ -53,15 +53,15 @@ public class HomeActivity extends AppCompatActivity{
         setContentView(R.layout.activity_home);
 
         initViews();
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.movie_detail);
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_orange_dark);
+        /*swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.movie_detail);
+        //swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_orange_dark);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 initViews();
                 Toast.makeText(HomeActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         BottomNavigationView bottomNavView = (BottomNavigationView) findViewById(R.id.bottomNavView);
         Menu menu = bottomNavView.getMenu();
@@ -76,6 +76,7 @@ public class HomeActivity extends AppCompatActivity{
                 switch (item.getItemId())   {
 
                     case R.id.ic_home:
+                        initViews();
                         break;
 
                     case R.id.ic_account:
@@ -157,9 +158,9 @@ public class HomeActivity extends AppCompatActivity{
                     List<com.example.uuj.moviebuddy.Movie> movies = response.body().getResults();
                     recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
                     recyclerView.smoothScrollToPosition(0);
-                    if(swipeRefreshLayout.isRefreshing())   {
+                    /*if(swipeRefreshLayout.isRefreshing())   {
                         swipeRefreshLayout.setRefreshing(false);
-                    }
+                    }*/
                     progressDialog.dismiss();
                 }
 
