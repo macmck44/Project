@@ -15,4 +15,10 @@ public interface Service {
 
     @GET("movie/top_rated")
     Call<Response> getTopRatedMovies(@Query("api_key") String apikey);
+
+    @GET("movie/upcoming")
+    Call<Response> getUpcomingMovies(@Query("api_key") String apikey);
+
+    @GET("movie/now_playing")
+    Call<Response> getNowPlayingMovies(@Query("api_key") String apikey);
 }
