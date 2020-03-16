@@ -40,7 +40,14 @@
         <activity android:name=".AccountActivity"/>
         <activity android:name=".RecActivity"/>
         <activity android:name=".NewsActivity"/>
-        <activity android:name=".DetailActivity"/>
+        <activity
+            android:name=".DetailActivity"
+            android:label="Movies"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity"/>
+        </activity>
     </application>
 
 </manifest>
