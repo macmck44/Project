@@ -40,6 +40,7 @@ import retrofit2.Callback;
 
 public class HomeActivity extends AppCompatActivity{
 
+    private Button popularbutton, topbutton, upcomingbutton, cinemasbutton;
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private List<Movie> movieList;
@@ -64,9 +65,45 @@ public class HomeActivity extends AppCompatActivity{
         });
 
         BottomNavigationView bottomNavView = (BottomNavigationView) findViewById(R.id.bottomNavView);
+        popularbutton = (Button) findViewById(R.id.popular_btn);
+        topbutton = (Button) findViewById(R.id.top_btn);
+        upcomingbutton = (Button) findViewById(R.id.upcoming_btn);
+        cinemasbutton = (Button) findViewById(R.id.cinemas_btn);
         Menu menu = bottomNavView.getMenu();
         MenuItem menuitem = menu.getItem(0);
         menuitem.setChecked(true);
+
+        popularbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initViews();
+                Toast.makeText(HomeActivity.this, "Showing most popular movies", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        topbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inittopmoviesViews();
+                Toast.makeText(HomeActivity.this, "Showing top rated movies", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        upcomingbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initupcomingmoviesViews();
+                Toast.makeText(HomeActivity.this, "Showing upcoming movies", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cinemasbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initincinemasViews();
+                Toast.makeText(HomeActivity.this, "Showing movies in cinemas", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,8 +113,6 @@ public class HomeActivity extends AppCompatActivity{
                 switch (item.getItemId())   {
 
                     case R.id.ic_home:
-                        initViews();
-                        Toast.makeText(HomeActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.ic_account:
@@ -131,6 +166,75 @@ public class HomeActivity extends AppCompatActivity{
 
     }
 
+    private void inittopmoviesViews()    {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Fetching movies...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        recyclerView = (RecyclerView) findViewById(R.id.movie_recyclerview);
+        movieList = new ArrayList<>();
+        adapter = new MovieAdapter(this, movieList);
+
+        if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)   {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }   else    {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        }
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        loadtopmoviesJSON();
+
+    }
+
+    private void initupcomingmoviesViews()    {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Fetching movies...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        recyclerView = (RecyclerView) findViewById(R.id.movie_recyclerview);
+        movieList = new ArrayList<>();
+        adapter = new MovieAdapter(this, movieList);
+
+        if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)   {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }   else    {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        }
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        loadupcomingmoviesJSON();
+
+    }
+
+    private void initincinemasViews()    {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Fetching movies...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        recyclerView = (RecyclerView) findViewById(R.id.movie_recyclerview);
+        movieList = new ArrayList<>();
+        adapter = new MovieAdapter(this, movieList);
+
+        if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)   {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }   else    {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        }
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        loadincinemasJSON();
+
+    }
+
     public Activity getActivity()   {
         Context context = this;
         while (context instanceof ContextWrapper)   {
@@ -153,6 +257,111 @@ public class HomeActivity extends AppCompatActivity{
             Client Client = new Client();
             Service apiService = Client.getClient().create(Service.class);
             Call<Response> call = apiService.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    List<com.example.uuj.moviebuddy.Movie> movies = response.body().getResults();
+                    recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                    recyclerView.smoothScrollToPosition(0);
+                    if(swipeRefreshLayout.isRefreshing())   {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch(Exception e)    {
+            Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void loadtopmoviesJSON() {
+        try{
+            if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty())   {
+                Toast.makeText(getApplicationContext(), "Need API Key", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return;
+            }
+
+            Client Client = new Client();
+            Service apiService = Client.getClient().create(Service.class);
+            Call<Response> call = apiService.getTopRatedMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    List<com.example.uuj.moviebuddy.Movie> movies = response.body().getResults();
+                    recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                    recyclerView.smoothScrollToPosition(0);
+                    if(swipeRefreshLayout.isRefreshing())   {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch(Exception e)    {
+            Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void loadupcomingmoviesJSON() {
+        try{
+            if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty())   {
+                Toast.makeText(getApplicationContext(), "Need API Key", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return;
+            }
+
+            Client Client = new Client();
+            Service apiService = Client.getClient().create(Service.class);
+            Call<Response> call = apiService.getUpcomingMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    List<com.example.uuj.moviebuddy.Movie> movies = response.body().getResults();
+                    recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                    recyclerView.smoothScrollToPosition(0);
+                    if(swipeRefreshLayout.isRefreshing())   {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch(Exception e)    {
+            Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void loadincinemasJSON() {
+        try{
+            if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty())   {
+                Toast.makeText(getApplicationContext(), "Need API Key", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return;
+            }
+
+            Client Client = new Client();
+            Service apiService = Client.getClient().create(Service.class);
+            Call<Response> call = apiService.getNowPlayingMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {

@@ -27,12 +27,50 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/resultsoptions"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView1"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/popular_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:text="Popular"/>
+
+        <Button
+            android:id="@+id/top_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:text="Top Rated"/>
+
+        <Button
+            android:id="@+id/upcoming_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:text="Upcoming"/>
+
+        <Button
+            android:id="@+id/cinemas_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:text="In Cinemas"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/movieinfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomnavbar"
-        android:layout_below="@+id/textView1">
+        android:layout_below="@+id/resultsoptions">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refreshlayout"
