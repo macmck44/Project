@@ -2,6 +2,7 @@
     <string name="app_name">MovieBuddy</string>
     <string name="maps_api_key">AIzaSyAnIrJX8WMNRzHTwEVAcFIdl8pW2Wn_dRc</string>
     <string name="moviedb_api_key">e3933d5b5c409463ee2c85a307c0df96</string>
+    <string name="youtube_api_key">AIzaSyAVN3pg7U4fEbSYPm_TKqHOypNUhTgK7bo</string>
     <string name="movie_name">Movie Title</string>
     <string name="movie_details">Movie Details</string>
     <string name="synopsis">Synopsis</string>
