@@ -11,14 +11,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 
 public class NewsActivity extends AppCompatActivity{
+
+    Button playbutton;
+    YouTubePlayerView youTubePlayerView;
+    YouTubePlayer.OnInitializedListener onInitializedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubeplayer);
+        playbutton = (Button) findViewById(R.id.play_btn);
         BottomNavigationView bottomNavView = (BottomNavigationView) findViewById(R.id.bottomNavView);
         Menu menu = bottomNavView.getMenu();
         MenuItem menuitem = menu.getItem(2);
@@ -59,5 +71,23 @@ public class NewsActivity extends AppCompatActivity{
             }
         });
 
+        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+            }
+        };
+
+        playbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
