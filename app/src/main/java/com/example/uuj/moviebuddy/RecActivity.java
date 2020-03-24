@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 public class RecActivity extends AppCompatActivity{
 
@@ -23,6 +25,15 @@ public class RecActivity extends AppCompatActivity{
         Menu menu = bottomNavView.getMenu();
         MenuItem menuitem = menu.getItem(3);
         menuitem.setChecked(true);
+        LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.movienews1);
+        linearLayout1.setClickable(true);
+
+        linearLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

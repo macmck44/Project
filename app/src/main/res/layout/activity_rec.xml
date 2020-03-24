@@ -49,10 +49,17 @@
 
                 <ImageView
                     android:id="@+id/quietplaceimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/quietplace"/>
+
+                <TextView
+                    android:id="@+id/quietplacetitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/quietplacetitle"/>
 
             </LinearLayout>
 
@@ -67,10 +74,17 @@
 
                 <ImageView
                     android:id="@+id/badboysimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/badboys"/>
+
+                <TextView
+                    android:id="@+id/badboystitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/badboystitle"/>
 
             </LinearLayout>
 
@@ -85,10 +99,17 @@
 
                 <ImageView
                     android:id="@+id/blackwidowimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/blackwidow"/>
+
+                <TextView
+                    android:id="@+id/blackwidowtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/blackwidowtitle"/>
 
             </LinearLayout>
 
@@ -103,10 +124,17 @@
 
                 <ImageView
                     android:id="@+id/ghostbustersimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/ghostbusters"/>
+
+                <TextView
+                    android:id="@+id/ghostbusterstitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/ghostbusterstitle"/>
 
             </LinearLayout>
 
@@ -121,10 +149,17 @@
 
                 <ImageView
                     android:id="@+id/potterimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/potter"/>
+
+                <TextView
+                    android:id="@+id/pottertitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/pottertitle"/>
 
             </LinearLayout>
 
@@ -139,10 +174,17 @@
 
                 <ImageView
                     android:id="@+id/sonicimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/sonic"/>
+
+                <TextView
+                    android:id="@+id/sonictitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/sonictitle"/>
 
             </LinearLayout>
 
@@ -157,10 +199,17 @@
 
                 <ImageView
                     android:id="@+id/spidermanimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/spiderman"/>
+
+                <TextView
+                    android:id="@+id/spidermantitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/spidermantitle"/>
 
             </LinearLayout>
 
@@ -175,10 +224,17 @@
 
                 <ImageView
                     android:id="@+id/starwarsimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/starwars"/>
+
+                <TextView
+                    android:id="@+id/starwarstitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/starwarstitle"/>
 
             </LinearLayout>
 
@@ -193,10 +249,17 @@
 
                 <ImageView
                     android:id="@+id/topgunimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/topgun"/>
+
+                <TextView
+                    android:id="@+id/topguntitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/topguntitle"/>
 
             </LinearLayout>
 
@@ -210,10 +273,17 @@
 
                 <ImageView
                     android:id="@+id/venomimg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="0.5"
                     android:src="@drawable/venom"/>
+
+                <TextView
+                    android:id="@+id/venomtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="@string/venomtitle"/>
 
             </LinearLayout>
 
