@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Recommendations"
+            android:text="News"
             android:textAlignment="center"
             android:textSize="30sp"    />
 

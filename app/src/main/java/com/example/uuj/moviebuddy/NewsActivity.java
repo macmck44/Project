@@ -13,17 +13,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewsActivity extends YouTubeBaseActivity{
 
     Button playbutton;
     YouTubePlayerView youTubePlayerView;
     YouTubePlayer.OnInitializedListener onInitializedListener;
+    List<String> trailerList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,16 @@ public class NewsActivity extends YouTubeBaseActivity{
         Menu menu = bottomNavView.getMenu();
         MenuItem menuitem = menu.getItem(2);
         menuitem.setChecked(true);
+        trailerList.add("XEMwSdne6UE");
+        trailerList.add("pHjTOzGU9oI");
+        trailerList.add("mXcZ7WDsVwk");
+        trailerList.add("RxAtuMu_ph4");
+        trailerList.add("vf1aW1z437I");
+        trailerList.add("J0hTmzISOlQ");
+        trailerList.add("fl2r3Fwxz_o");
+        trailerList.add("sfM7_JLk-84");
+        trailerList.add("eyzxu26-Wqk");
+        trailerList.add("qSqVVswa420");
 
         bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -75,12 +88,12 @@ public class NewsActivity extends YouTubeBaseActivity{
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("XEMwSdne6UE");
+                youTubePlayer.loadVideos(trailerList);
             }
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
+                Toast.makeText(NewsActivity.this, "Failed to load video", Toast.LENGTH_SHORT).show();
             }
         };
 
