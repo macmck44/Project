@@ -39,6 +39,7 @@
         <activity android:name=".MapsActivity"/>
         <activity android:name=".AccountActivity"/>
         <activity android:name=".RecActivity"/>
+        <activity android:name=".RecDetailActivity"/>
         <activity android:name=".NewsActivity"/>
         <activity
             android:name=".DetailActivity"

@@ -61,6 +61,13 @@
                     android:layout_weight="0.5"
                     android:text="@string/quietplacetitle"/>
 
+                <TextView
+                    android:id="@+id/quietplacenews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/quietplacenews"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -85,6 +92,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="@string/badboystitle"/>
+
+                <TextView
+                    android:id="@+id/badboysnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/badboysnews"/>
 
             </LinearLayout>
 
@@ -111,6 +125,13 @@
                     android:layout_weight="0.5"
                     android:text="@string/blackwidowtitle"/>
 
+                <TextView
+                    android:id="@+id/blackwidownews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/blackwidownews"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -135,6 +156,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="@string/ghostbusterstitle"/>
+
+                <TextView
+                    android:id="@+id/ghostbustersnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/ghostbustersnews"/>
 
             </LinearLayout>
 
@@ -161,6 +189,13 @@
                     android:layout_weight="0.5"
                     android:text="@string/pottertitle"/>
 
+                <TextView
+                    android:id="@+id/potternews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/potternews"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -185,6 +220,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="@string/sonictitle"/>
+
+                <TextView
+                    android:id="@+id/sonicnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/sonicnews"/>
 
             </LinearLayout>
 
@@ -211,6 +253,13 @@
                     android:layout_weight="0.5"
                     android:text="@string/spidermantitle"/>
 
+                <TextView
+                    android:id="@+id/spidermannews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/spidermannews"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -235,6 +284,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="@string/starwarstitle"/>
+
+                <TextView
+                    android:id="@+id/starwarsnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/starwarsnews"/>
 
             </LinearLayout>
 
@@ -261,6 +317,13 @@
                     android:layout_weight="0.5"
                     android:text="@string/topguntitle"/>
 
+                <TextView
+                    android:id="@+id/topgunnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/topgunnews"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -284,6 +347,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="@string/venomtitle"/>
+
+                <TextView
+                    android:id="@+id/venomnews"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"
+                    android:text="@string/venomnews"/>
 
             </LinearLayout>
 
