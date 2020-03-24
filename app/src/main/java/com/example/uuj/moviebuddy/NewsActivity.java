@@ -14,11 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class NewsActivity extends AppCompatActivity{
+public class NewsActivity extends YouTubeBaseActivity{
 
     Button playbutton;
     YouTubePlayerView youTubePlayerView;
@@ -74,7 +75,7 @@ public class NewsActivity extends AppCompatActivity{
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-
+                youTubePlayer.loadVideo("XEMwSdne6UE");
             }
 
             @Override
@@ -86,7 +87,7 @@ public class NewsActivity extends AppCompatActivity{
         playbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                youTubePlayerView.initialize(getString(R.string.youtube_api_key), onInitializedListener);
             }
         });
     }
