@@ -10,6 +10,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/toplayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
@@ -27,7 +28,201 @@
 
     </RelativeLayout>
 
+    <ScrollView
+        android:id="@+id/newslayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toplayout1"
+        android:layout_above="@id/bottomlayout1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/movienews1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/quietplaceimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/quietplace"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews1"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/badboysimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/badboys"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews2"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/blackwidowimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/blackwidow"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews3"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/ghostbustersimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/ghostbusters"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews5"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews4"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/potterimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/potter"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews6"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews5"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/sonicimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/sonic"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews7"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews6"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/spidermanimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/spiderman"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews8"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews7"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/starwarsimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/starwars"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews9"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews8"
+                android:background="@drawable/border">
+
+                <ImageView
+                    android:id="@+id/topgunimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/topgun"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/movienews10"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@+id/movienews9">
+
+                <ImageView
+                    android:id="@+id/venomimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/venom"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
     <RelativeLayout
+        android:id="@+id/bottomlayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
