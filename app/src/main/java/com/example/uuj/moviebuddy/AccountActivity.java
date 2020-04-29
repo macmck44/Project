@@ -37,6 +37,7 @@ public class AccountActivity extends AppCompatActivity{
     EditText et_subject;
     EditText et_message;
     Button btn_send;
+    Button btn_donate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class AccountActivity extends AppCompatActivity{
         et_subject = (EditText) findViewById(R.id.subject1);
         et_message = (EditText) findViewById(R.id.message1);
         btn_send = (Button) findViewById(R.id.button_send);
+        btn_donate = (Button) findViewById(R.id.button_options1_1);
 
         /*Firebase library implemented in the app gradle
           user_auth is part of the Firebase library to connect to FirebaseAuth and get the instance and current user.
@@ -81,6 +83,13 @@ public class AccountActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sendEmail();
+            }
+        });
+
+        btn_donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
