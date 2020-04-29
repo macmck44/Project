@@ -5,10 +5,11 @@ http://www.simplifiedcoding.net/android-email-app-using-javamail-api-in-android-
 
 package com.example.uuj.moviebuddy;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -28,6 +29,7 @@ public class Email extends AsyncTask<Void, Void, Void>{
     private String email;
     private String subject;
     private String message;
+    private ProgressDialog progressDialog;
 
 
 
@@ -40,6 +42,20 @@ public class Email extends AsyncTask<Void, Void, Void>{
 
     }
 
+    @Override
+    public void onPreExecute()  {
+        super.onPreExecute();
+        progressDialog = ProgressDialog.show(context, "Sending", "Please wait...", false, false);
+    }
+
+    @Override
+    public void onPostExecute(Void aVoid)   {
+        super.onPostExecute(aVoid);
+        progressDialog.dismiss();
+        Toast.makeText(context, "Sent", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public Void doInBackground(Void... params)  {
 
         Properties pr = new Properties();
@@ -51,7 +67,7 @@ public class Email extends AsyncTask<Void, Void, Void>{
 
         session = Session.getDefaultInstance(pr,
                 new javax.mail.Authenticator()  {
-                    protected PasswordAuthentication thePasswordAuthentication()    {
+                    protected PasswordAuthentication getPasswordAuthentication()    {
                         return new PasswordAuthentication(EmailConfig.EMAIL, EmailConfig.PASSWORD);
                     }
                 });

@@ -25,9 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import java.util.Properties;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 
 public class AccountActivity extends AppCompatActivity{
 
