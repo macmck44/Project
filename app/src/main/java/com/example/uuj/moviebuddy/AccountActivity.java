@@ -2,8 +2,12 @@
 https://developer.android.com/guide/navigation/navigation-ui#java
 https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305
 
-Displaying username and email address sourced from here
-https://firebase.google.com/docs/auth/android/custom-auth*/
+Displaying username and email address sourced from here:
+https://firebase.google.com/docs/auth/android/custom-auth
+
+Sending email sourced from here:
+http://www.simplifiedcoding.net/android-email-app-using-javamail-api-in-android-studio/
+*/
 
 package com.example.uuj.moviebuddy;
 
@@ -16,11 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 
 public class AccountActivity extends AppCompatActivity{
 
@@ -29,6 +36,10 @@ public class AccountActivity extends AppCompatActivity{
     TextView tv_username;
     TextView tv_email;
     Button btn_logout;
+    TextView tv_emailaddress;
+    EditText et_subject;
+    EditText et_message;
+    Button btn_send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,10 @@ public class AccountActivity extends AppCompatActivity{
         tv_username.setText(current_user.getDisplayName());
         tv_email.setText(current_user.getEmail());
         btn_logout = (Button) findViewById(R.id.button_logout);
+        tv_emailaddress = (TextView) findViewById(R.id.emailaddress1);
+        et_subject = (EditText) findViewById(R.id.subject1);
+        et_message = (EditText) findViewById(R.id.message1);
+        btn_send = (Button) findViewById(R.id.button_send);
 
         /*Firebase library implemented in the app gradle
           user_auth is part of the Firebase library to connect to FirebaseAuth and get the instance and current user.
@@ -62,6 +77,13 @@ public class AccountActivity extends AppCompatActivity{
                     finish();
                     openLoginActivity();
 
+            }
+        });
+
+        btn_send.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
             }
         });
 
@@ -106,5 +128,15 @@ public class AccountActivity extends AppCompatActivity{
     public void openLoginActivity() {
         Intent intent = new Intent(this, com.example.uuj.moviebuddy.LoginActivity.class);
         startActivity(intent);
+    }
+
+    public void sendEmail() {
+
+        String email = tv_emailaddress.getText().toString().trim();
+        String subject = et_subject.getText().toString().trim();
+        String message = et_message.getText().toString().trim();
+
+        Email theEmail = new Email(this, email, subject, message);
+        theEmail.execute();
     }
 }
