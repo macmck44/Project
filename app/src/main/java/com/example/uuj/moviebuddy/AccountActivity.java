@@ -25,6 +25,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+
+import org.json.JSONException;
+
+import java.math.BigDecimal;
 
 public class AccountActivity extends AppCompatActivity{
 
@@ -38,6 +47,19 @@ public class AccountActivity extends AppCompatActivity{
     EditText et_message;
     Button btn_send;
     Button btn_donate;
+    EditText et_donate;
+    String amount = "";
+
+    @Override
+    protected void onDestroy()  {
+        stopService(new Intent(this, PayPalService.class));
+        super.onDestroy();
+    }
+
+    private static final int PAYPAL_REQUEST_CODE = 7171;
+    private static PayPalConfiguration paypalconfig = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            .clientId(PaypalConfig.PAYPAL_CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +79,7 @@ public class AccountActivity extends AppCompatActivity{
         et_message = (EditText) findViewById(R.id.message1);
         btn_send = (Button) findViewById(R.id.button_send);
         btn_donate = (Button) findViewById(R.id.button_options1_1);
+        et_donate = (EditText) findViewById(R.id.donateamount);
 
         /*Firebase library implemented in the app gradle
           user_auth is part of the Firebase library to connect to FirebaseAuth and get the instance and current user.
@@ -66,6 +89,10 @@ public class AccountActivity extends AppCompatActivity{
         Menu menu = bottomNavView.getMenu();
         MenuItem menuitem = menu.getItem(1);
         menuitem.setChecked(true);
+
+        Intent intent = new Intent(this, PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalconfig);
+        startService(intent);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +116,7 @@ public class AccountActivity extends AppCompatActivity{
         btn_donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                processPayPalPayment();
             }
         });
 
@@ -129,6 +156,39 @@ public class AccountActivity extends AppCompatActivity{
             }
         });
 
+    }
+
+    private void processPayPalPayment() {
+        amount = et_donate.getText().toString();
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),
+                "GBP", "Donate", PayPalPayment.PAYMENT_INTENT_SALE);
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalconfig);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
+        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)   {
+        if(requestCode == PAYPAL_REQUEST_CODE)  {
+            if(resultCode == RESULT_OK) {
+                PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if(paymentConfirmation != null) {
+                    try {
+                        String paymentDetails = paymentConfirmation.toJSONObject().toString(4);
+                        startActivity(new Intent(this, com.example.uuj.moviebuddy.PaymentDetails.class)
+                                .putExtra("PaymentDetails", paymentDetails)
+                                .putExtra("PaymentAmount", amount));
+                    } catch(JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else  {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        } else  {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void openLoginActivity() {
