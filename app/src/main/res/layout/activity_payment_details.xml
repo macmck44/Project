@@ -13,22 +13,59 @@
         android:layout_centerInParent="true">
 
         <TextView
-            android:id="@+id/textid"
-            android:layout_width="wrap_content"
+            android:id="@+id/thanksmsg"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Payment ID"/>
+            android:text="Thanks For Your Donation!"
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/textid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Payment ID"
+            android:textAlignment="center"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textamount"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Payment Amount"/>
+            android:layout_marginTop="10dp"
+            android:text="Payment Amount"
+            android:textAlignment="center"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textstatus"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Payment Status"/>
+            android:layout_marginTop="10dp"
+            android:text="Payment Status"
+            android:textAlignment="center"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/returnbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/mybutton"
+            android:text="Return to Account Page"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 
