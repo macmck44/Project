@@ -3,7 +3,12 @@ https://firebase.google.com/docs/auth/android/custom-auth */
 
 package com.example.uuj.moviebuddy;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -65,7 +70,32 @@ public class LoginActivity extends AppCompatActivity {
                 if( task.isSuccessful() )   {
                     Toast.makeText(getApplicationContext(), "Login successful",Toast.LENGTH_LONG).show();
                     openHomeActivity();
+
+                    NotificationCompat.Builder nbuilder = new NotificationCompat.Builder(
+                            LoginActivity.this);
+                    nbuilder.setSmallIcon(R.drawable.ic_notification);
+                    nbuilder.setContentTitle("MovieBuddy");
+                    nbuilder.setContentText("Login successful");
+                    nbuilder.setAutoCancel(true);
+
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(LoginActivity.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+                    nbuilder.setContentIntent(pendingIntent);
+
+                    NotificationManager nmanager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+                /* Notifications changed with API26+ and need a channelId to be added to work. Used this source for help.
+                   https://stackoverflow.com/questions/16045722/android-notification-is-not-showing */
+
+                    String channelId = "Notification";
+                    NotificationChannel nchannel = new NotificationChannel(channelId, "Channel Title", NotificationManager.IMPORTANCE_HIGH);
+                    nmanager.createNotificationChannel(nchannel);
+                    nbuilder.setChannelId(channelId);
+
+                    nmanager.notify(0, nbuilder.build());
                 }
+
                 else    {
                     Toast.makeText(getApplicationContext(), "Login Failed",Toast.LENGTH_LONG).show();
                 }

@@ -1,7 +1,12 @@
 package com.example.uuj.moviebuddy;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +39,30 @@ public class PaymentDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openAccountActivity();
+
+                NotificationCompat.Builder nbuilder = new NotificationCompat.Builder(
+                        PaymentDetails.this);
+                nbuilder.setSmallIcon(R.drawable.ic_notification);
+                nbuilder.setContentTitle("MovieBuddy");
+                nbuilder.setContentText("Thanks for your donation!");
+                nbuilder.setAutoCancel(true);
+
+                Intent intent = new Intent(PaymentDetails.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(PaymentDetails.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+                nbuilder.setContentIntent(pendingIntent);
+
+                NotificationManager nmanager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+                /* Notifications changed with API26+ and need a channelId to be added to work. Used this source for help.
+                   https://stackoverflow.com/questions/16045722/android-notification-is-not-showing */
+
+                String channelId = "Notification";
+                NotificationChannel nchannel = new NotificationChannel(channelId, "Channel Title", NotificationManager.IMPORTANCE_HIGH);
+                nmanager.createNotificationChannel(nchannel);
+                nbuilder.setChannelId(channelId);
+
+                nmanager.notify(0, nbuilder.build());
             }
         });
 

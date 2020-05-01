@@ -11,9 +11,14 @@ http://www.simplifiedcoding.net/android-email-app-using-javamail-api-in-android-
 
 package com.example.uuj.moviebuddy;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -103,6 +108,30 @@ public class AccountActivity extends AppCompatActivity{
                     finish();
                     openLoginActivity();
 
+                NotificationCompat.Builder nbuilder = new NotificationCompat.Builder(
+                        AccountActivity.this);
+                nbuilder.setSmallIcon(R.drawable.ic_notification);
+                nbuilder.setContentTitle("MovieBuddy");
+                nbuilder.setContentText("Logout successful");
+                nbuilder.setAutoCancel(true);
+
+                Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(AccountActivity.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+                nbuilder.setContentIntent(pendingIntent);
+
+                NotificationManager nmanager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+                /* Notifications changed with API26+ and need a channelId to be added to work. Used this source for help.
+                   https://stackoverflow.com/questions/16045722/android-notification-is-not-showing */
+
+                String channelId = "Notification";
+                NotificationChannel nchannel = new NotificationChannel(channelId, "Channel Title", NotificationManager.IMPORTANCE_HIGH);
+                nmanager.createNotificationChannel(nchannel);
+                nbuilder.setChannelId(channelId);
+
+                nmanager.notify(0, nbuilder.build());
+
             }
         });
 
@@ -110,6 +139,30 @@ public class AccountActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sendEmail();
+
+                NotificationCompat.Builder nbuilder = new NotificationCompat.Builder(
+                        AccountActivity.this);
+                nbuilder.setSmallIcon(R.drawable.ic_notification);
+                nbuilder.setContentTitle("MovieBuddy");
+                nbuilder.setContentText("Thanks for your email! We will look into your issue ASAP.");
+                nbuilder.setAutoCancel(true);
+
+                Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(AccountActivity.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+                nbuilder.setContentIntent(pendingIntent);
+
+                NotificationManager nmanager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+                /* Notifications changed with API26+ and need a channelId to be added to work. Used this source for help.
+                   https://stackoverflow.com/questions/16045722/android-notification-is-not-showing */
+
+                String channelId = "Notification";
+                NotificationChannel nchannel = new NotificationChannel(channelId, "Channel Title", NotificationManager.IMPORTANCE_HIGH);
+                nmanager.createNotificationChannel(nchannel);
+                nbuilder.setChannelId(channelId);
+
+                nmanager.notify(0, nbuilder.build());
             }
         });
 
