@@ -3,18 +3,22 @@ https://firebase.google.com/docs/auth/android/custom-auth */
 
 package com.example.uuj.moviebuddy;
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
     private Button btn_reg;
     private Button btn_login;
+    private Button btn_recover;
     private EditText loginEmail, loginPassword;
     private FirebaseAuth user_auth;
 
@@ -36,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = (EditText) findViewById(R.id.editText_Password);
         btn_reg = (Button) findViewById(R.id.button_Login1);
         btn_login = (Button) findViewById(R.id.button_Login);
+        btn_recover = (Button) findViewById(R.id.button_recover);
 
         user_auth = FirebaseAuth.getInstance();
 
@@ -61,6 +67,44 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_recover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRecoverOption();
+            }
+        });
+    }
+
+    private void openRecoverOption() {
+        AlertDialog.Builder abuilder = new AlertDialog.Builder(this);
+        LinearLayout llayout = new LinearLayout(this);
+        abuilder.setTitle("Recover Password");
+        final EditText etEmail = new EditText(this);
+        etEmail.setHint("Email Address");
+        llayout.addView(etEmail);
+        abuilder.setView(llayout);
+
+        abuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        abuilder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String emailaddress = etEmail.getText().toString().trim();
+                startRecover(emailaddress);
+            }
+        });
+
+        abuilder.create().show();
+    }
+
+    private void startRecover(String emailaddress) {
+        user_auth.sendPasswordResetEmail(emailaddress);
+        Toast.makeText(this, "Email sent", Toast.LENGTH_SHORT).show();
     }
 
     private void login(String email, String password) {

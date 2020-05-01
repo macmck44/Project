@@ -51,12 +51,24 @@
         android:id="@+id/button_Login"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/button_Login1"
+        android:layout_above="@+id/button_recover"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="113dp"
+        android:layout_marginBottom="3dp"
         android:background="@drawable/mybutton"
         android:text="Login"
         android:textColor="#fff"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button_recover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_Login1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:background="@android:color/transparent"
+        android:text="Forgot Password? Recover"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
     <Button
