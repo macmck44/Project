@@ -1,3 +1,12 @@
+/*
+Paypal API sourced from here:
+https://developer.paypal.com/docs/wlw/android-sdk/
+http://technxt.net/how-to-integrate-paypal-payment-in-android-app-using-android-studio/
+
+Notifications sourced from here:
+https://developer.android.com/training/notify-user/build-notification#java
+*/
+
 package com.example.uuj.moviebuddy;
 
 import android.app.NotificationChannel;

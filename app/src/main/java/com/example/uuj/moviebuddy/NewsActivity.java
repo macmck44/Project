@@ -1,6 +1,11 @@
-/*Developer documentation sources below used for bottom navigation view
+/*
+Developer documentation sources below used for bottom navigation view
 https://developer.android.com/guide/navigation/navigation-ui#java
-https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305*/
+https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305
+
+Youtube API sourced from here:
+https://developers.google.com/youtube/android/player
+*/
 
 package com.example.uuj.moviebuddy;
 

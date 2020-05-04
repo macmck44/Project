@@ -1,4 +1,5 @@
-/*Developer documentation sources below used for bottom navigation view
+/*
+Bottom navigation view sourced from here:
 https://developer.android.com/guide/navigation/navigation-ui#java
 https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305
 
@@ -7,6 +8,13 @@ https://firebase.google.com/docs/auth/android/custom-auth
 
 Sending email sourced from here:
 http://www.simplifiedcoding.net/android-email-app-using-javamail-api-in-android-studio/
+
+Paypal SDK sourced from here:
+https://developer.paypal.com/docs/wlw/android-sdk/
+http://technxt.net/how-to-integrate-paypal-payment-in-android-app-using-android-studio/
+
+Notifications sourced from here:
+https://developer.android.com/training/notify-user/build-notification#java
 */
 
 package com.example.uuj.moviebuddy;

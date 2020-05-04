@@ -1,13 +1,15 @@
-/*Developer documentation sources below used for bottom navigation view
+/*
+Developer documentation sources below used for bottom navigation view
 https://developer.android.com/guide/navigation/navigation-ui#java
 https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305
 
-Developer documentation source below for Google Maps API
-https://developers.google.com/maps/documentation/android-sdk/start*/
+Google Maps API sourced from here:
+https://developers.google.com/maps/documentation/android-sdk/start
+https://abhiandroid.com/programming/googlemaps
+*/
 
 package com.example.uuj.moviebuddy;
 
-import android.*;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;

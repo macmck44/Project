@@ -1,10 +1,12 @@
-/*Developer documentation sources below used for bottom navigation view
+/*
+Developer documentation sources below used for bottom navigation view
 https://developer.android.com/guide/navigation/navigation-ui#java
 https://code.tutsplus.com/tutorials/how-to-code-a-bottom-navigation-bar-for-an-android-app--cms-30305
 
-Following sources used to help with TheMovieDB API
+TheMovieDB implementation sourced from here:
 https://developers.themoviedb.org/3/getting-started/introduction
-https://www.themoviedb.org/documentation/api*/
+https://www.supinfo.com/articles/single/7849-developing-popular-movies-application-in-android-using-retrofit
+*/
 
 
 package com.example.uuj.moviebuddy;
@@ -14,8 +16,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;
-//import android.graphics.Movie;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -24,17 +24,14 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -384,21 +381,5 @@ public class HomeActivity extends AppCompatActivity{
             Toast.makeText(HomeActivity.this, "Error Fetching Data", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)   {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId())    {
-            case R.id.menu_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

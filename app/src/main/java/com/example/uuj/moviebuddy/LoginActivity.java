@@ -1,5 +1,13 @@
-/* Used the following to help with Firebase authentication
-https://firebase.google.com/docs/auth/android/custom-auth */
+/*
+Used the following to help with Firebase authentication:
+https://firebase.google.com/docs/auth/android/custom-auth
+
+Sending password recovery email sourced from here:
+https://grokonez.com/android/firebase-authentication-send-reset-password-email-forgot-password-android
+
+Notifications sourced from here:
+https://developer.android.com/training/notify-user/build-notification#java
+*/
 
 package com.example.uuj.moviebuddy;
 

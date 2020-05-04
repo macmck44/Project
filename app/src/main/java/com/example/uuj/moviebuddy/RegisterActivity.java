@@ -1,5 +1,7 @@
-/* Used the following to help with Firebase authentication
-https://firebase.google.com/docs/auth/android/custom-auth */
+/*
+Used the following to help with Firebase authentication
+https://firebase.google.com/docs/auth/android/custom-auth
+*/
 
 package com.example.uuj.moviebuddy;
 

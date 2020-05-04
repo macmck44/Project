@@ -1,3 +1,9 @@
+/*
+TheMovieDB implementation sourced from here:
+https://developers.themoviedb.org/3/getting-started/introduction
+https://www.supinfo.com/articles/single/7849-developing-popular-movies-application-in-android-using-retrofit
+*/
+
 package com.example.uuj.moviebuddy;
 
 import android.content.Intent;

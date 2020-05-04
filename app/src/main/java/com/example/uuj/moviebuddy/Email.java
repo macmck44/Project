@@ -1,5 +1,6 @@
-/*I know how to send an email using an intent, i wanted my app to not have to use an intent and open
-an external email app to send the email. The following source was used for the below code
+/*
+I know how to send an email using an intent, i wanted my app to not have to use an intent and open
+an external email app to send the email. JavaMail API was sourced from here:
 http://www.simplifiedcoding.net/android-email-app-using-javamail-api-in-android-studio/
 */
 
